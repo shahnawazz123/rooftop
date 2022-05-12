@@ -15,7 +15,7 @@ class ApiController extends ActiveController
     		$modelArtist = new Artist();
     		$modelArtist->localTimeZone = 5;
     		Yii::$app->response->format = yii\web\Response:: FORMAT_JSON;
-        	return array('status' => true, 'result' => $modelArtist->getCoaches(),'message'=> 'getCoaches');
+        	return array('status' => true, 'result' => $modelArtist->getCoaches(),'message'=> 'I want to see which coaches I can schedule with.');
     	} catch (yii\db\Exception $e) {
             Yii::error($e, 'db_error');
             return array('status' => false,'message'=> $e->getMessage());
@@ -35,7 +35,7 @@ class ApiController extends ActiveController
     	try {
     		$modelArtist = new Artist();
     		$modelArtist->localTimeZone = 5;
-            $msg = 'Successfull';
+            $msg = 'I want to see what 30-minute time slots are available to schedule with a particular coach.';
             date_default_timezone_set('Asia/Kolkata');
     		$records = [];$day = date("l");$current_time =  date('H:i:s');
     		foreach ($modelArtist->getCoaches($day) as $key => $coach) {
@@ -49,7 +49,7 @@ class ApiController extends ActiveController
     					'available_until' => $coach->available_until
     				];
     			}else{
-                    $msg = 'No result found.';
+                    $msg ='No result found.I want to see what 30-minute time slots are available to schedule with a particular coach.';
                 }
     		}
     		Yii::$app->response->format = yii\web\Response:: FORMAT_JSON;
@@ -90,7 +90,7 @@ class ApiController extends ActiveController
     				];
     			}
     		}
-        	return array('status' => true, 'result' => $records,'message'=> 'getCoaches');
+        	return array('status' => true, 'result' => $records,'message'=> 'I want to book an appointment with a coach at one of their available times.');
     	} catch (yii\db\Exception $e) {
             Yii::error($e, 'db_error');
             return array('status' => false,'message'=> $e->getMessage());
