@@ -15,3 +15,5 @@ List of apis -
 		API- http://localhost:8080/api/available-coaches?available_time=09:00:00
 		Method- Get
 		Params- available_time
+
+Note: all coaches show on user local time and day;		
